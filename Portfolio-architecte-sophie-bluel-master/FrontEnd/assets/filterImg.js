@@ -12,12 +12,12 @@ fetch("http://localhost:5678/api/works")
             gallery.innerHTML = "";
             imgFilters.forEach(function (projet) {
                 const img = document.createElement("img");
-                const imgTitle = document.createElement("figcaption");
+                const figcaption = document.createElement("figcaption");
                 const figure = document.createElement("figure");
                 img.src = projet.imageUrl;
-                imgTitle.textContent = projet.title;
+                figcaption.textContent = projet.title;
                 figure.appendChild(img);
-                figure.appendChild(imgTitle);
+                figure.appendChild(figcaption);
                 gallery.appendChild(figure);
             });
         }
@@ -46,8 +46,6 @@ fetch("http://localhost:5678/api/works")
         allPics.addEventListener("click", function () {
             displayImages(data);
         });
-        // Ajouter la classe active à l'option "Tous les travaux" par défaut
-        allPics.classList.add("active");
-        // Afficher tous les travaux par défaut
+        
         displayImages(data);
     });
