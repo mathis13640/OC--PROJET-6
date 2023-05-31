@@ -238,3 +238,89 @@ footer nav ul {
 	margin: 2em
 }
 
+/****/
+
+.divcat {
+	display: flex;
+	justify-content: center;
+	margin: 20px 0 40px 0;
+}
+
+.divcat label {
+	padding-right: 20px;
+}
+
+button {
+	padding: 10px 20px;
+	margin: 0 15px;
+	border-radius: 20px;
+	color: #1D6154;
+	font-weight: bold;
+}
+
+.selected {
+	background-color: #1D6154;
+	border: none;
+	color: white;
+}
+
+#log {
+	margin-top: 150px;
+	margin-bottom: 350px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+#log input {
+	width: 379px;
+	height: 51px;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+}
+
+form p {
+	margin-bottom: 7px;	
+	margin-top: 30px;
+}
+
+#contact input {
+	height: 51px;
+	width: 379px;
+}
+
+#log button {
+	margin: 30px auto;
+	width: 179px;
+	background-color: #1D6154;
+	border: none;
+	color: white;
+}
+
+.forget {
+	margin: auto;
+}
+
+.forget a {
+	color: #1D6154;
+	font-weight: bold;
+}
+
+#login2 {
+	font-weight: bold;
+}
+
+header a {
+	text-decoration: none;
+	color: black;
+}
