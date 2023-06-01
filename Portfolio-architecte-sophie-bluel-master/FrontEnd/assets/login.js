@@ -11,7 +11,7 @@ form.addEventListener('submit', (event) => {
     password: password
   };
 
-  //Envoie données à l'API
+  //Sending data to API
   fetch("http://localhost:5678/api/users/login", {
     method: 'POST',
     body: JSON.stringify(user),
@@ -33,7 +33,7 @@ form.addEventListener('submit', (event) => {
     
     window.location.href = './index.html'; // Redirige the user to the home page
   })
-  .catch(error => { //Display an ERROR message i
+  .catch(error => { //Display an ERROR message for the user
     alert(error.message);
     console.error('Une erreur s\'est produite:', error);
   });
