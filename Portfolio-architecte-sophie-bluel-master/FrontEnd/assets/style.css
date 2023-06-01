@@ -144,9 +144,6 @@ nav li img{
     width: 20px;
 }
 
-
-
-
 li a:hover {
 	color: #B1663C;
 }
@@ -324,3 +321,94 @@ header a {
 	text-decoration: none;
 	color: black;
 }
+
+/****EDITING MODE****/
+.edition {
+	background-color: black;
+	display: flex;
+	margin-right:3;
+	flex-direction: row;
+	align-content: center;
+	justify-content: center;
+	align-items: center;
+	height: 60px;
+	width: 115vh;
+	color: white;
+	margin-left: -200px;
+}
+
+.edition button {
+	background-color: white;
+	color: black;
+	border-radius: 20px;
+	padding: 10px 20px;
+	margin: 0 20px;
+}
+
+.edition span {
+	width: min-content;
+	margin: 0px;
+}
+
+/* Display when connected */
+
+aside a {
+	padding-bottom: 25px;
+	text-decoration: none;
+	color: black;
+}
+
+.change {
+	cursor: pointer;
+}
+span {
+	margin: auto;
+	width: 80%;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	margin-top: 15px;
+	cursor: pointer;
+}
+.forget {
+	justify-content: center;
+}
+
+span i {
+	font-size: 15px;
+}
+
+span p {
+	padding-left: 10px;
+	font-size: 14px;
+}
+
+aside {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+aside span {
+	margin: 0;
+	margin-left: 30px;
+	width: min-content;
+}
+
+.portfolio aside h2 {
+	margin: 0px;
+}
+
+article span {
+	margin-left: 0px;
+	margin-bottom: 20px;
+}
+
+
+/*If disconnected*/
+.notDisplay{
+	display : none
+}
+
+
