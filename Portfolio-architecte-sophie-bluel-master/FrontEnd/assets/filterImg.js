@@ -49,3 +49,15 @@ fetch("http://localhost:5678/api/works")
         
         displayImages(data);
     });
+
+
+const buttons = document.querySelectorAll('.btn');
+
+buttons.forEach(function(button) {
+  button.addEventListener('click', function() {
+    buttons.forEach(function(btn) {
+      btn.classList.remove('active-color');
+    });
+    button.classList.add('active-color');
+  });
+});

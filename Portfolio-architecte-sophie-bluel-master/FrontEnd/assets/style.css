@@ -87,7 +87,10 @@ h1 > span {
 	padding: 8px 15px;
 }
 
- .btns .btn-dimensions:hover {
+#all-pics.btn.active-color,
+#objets.btn.active-color,
+#appartements.btn.active-color,
+#hotels.btn.active-color {
     background: #1D6154;
     color: #FFFFFF;
 }
