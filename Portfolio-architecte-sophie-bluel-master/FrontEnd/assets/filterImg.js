@@ -51,13 +51,29 @@ fetch("http://localhost:5678/api/works")
     });
 
 
-const buttons = document.querySelectorAll('.btn');
 
-buttons.forEach(function(button) {
-  button.addEventListener('click', function() {
-    buttons.forEach(function(btn) {
-      btn.classList.remove('active-color');
+
+document.addEventListener('DOMContentLoaded', function() {
+    const buttons = document.querySelectorAll('.btn');
+    
+    buttons.forEach(function(button) {
+      button.addEventListener('click', function() {
+        buttons.forEach(function(btn) {
+          btn.classList.remove('active-color');
+        });
+        button.classList.add('active-color');
+      });
     });
-    button.classList.add('active-color');
+  
+    buttons.forEach(function(button) {
+      button.classList.remove('active-color');
+    });
   });
-});
+
+  
+  
+  
+  
+  
+  
+  

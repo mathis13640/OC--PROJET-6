@@ -48,10 +48,11 @@ form.addEventListener('submit', (event) => {
 });
 
 //Déclaration des variables et récupération des éléments html//
-const logoutButton = document.querySelector('#logout');
 const loginButton = document.querySelector('#login');
-const spanElements = document.querySelectorAll('span');
+const logoutButton = document.querySelector('#logout');
 const edition = document.querySelector('.edition');
+const btnsFilter = document.querySelector('.btns');
+const spanElements = document.querySelectorAll('span');
 
 
 //Met à jour l'interface basé sur le status de connexion de l'utilisateur
@@ -59,8 +60,9 @@ function updateUI() {
   if (localStorage.getItem('authToken')) {
 
     //L'utilisateur est connecté
-    logoutButton.classList.remove('notDisplay');
     loginButton.classList.add('notDisplay');
+    btnsFilter.classList.add('notDisplay');
+    logoutButton.classList.remove('notDisplay');
     edition.classList.remove('notDisplay');
     spanElements.forEach(span => {
       span.classList.remove('notDisplay');
@@ -68,8 +70,9 @@ function updateUI() {
   } else {
 
     //L'utilisateur est déconnecté///
-    logoutButton.classList.add('notDisplay');
     loginButton.classList.remove('notDisplay');
+    btnsFilter.classList.remove('notDisplay');
+    logoutButton.classList.add('notDisplay');
     edition.classList.add('notDisplay');
     spanElements.forEach(span => {
       span.classList.add('notDisplay');
