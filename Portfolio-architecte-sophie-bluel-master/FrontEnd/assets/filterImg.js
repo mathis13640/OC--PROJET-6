@@ -50,9 +50,7 @@ fetch("http://localhost:5678/api/works")
         displayImages(data);
     });
 
-
-
-
+    
 document.addEventListener('DOMContentLoaded', function() {
     const buttons = document.querySelectorAll('.btn');
     
