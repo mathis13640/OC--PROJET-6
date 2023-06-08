@@ -414,4 +414,146 @@ article span {
 	display : none
 }
 
+/*Modale*/
 
+.icons {
+	display: flex;
+	width: 100%;
+}
+
+.fa-arrow-left {
+	color: black;
+	font-size: 1.2em;
+	padding: 5px;
+	position: relative;
+	left: -70px;
+}
+
+.js-modal-close {
+	margin: 5px;
+	padding: 0;
+	border-radius: 0;
+	border: 0;
+	position: relative;
+	right: -70px;
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	background-color: white;
+	cursor:pointer;
+}
+
+.js-modal-close i {
+	color: black;
+	height: 15px;
+	width: 15px;
+	padding: 5px;
+}
+
+#modal {
+	position: fixed;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.8);
+}
+
+.modal-wrapper {
+	overflow: auto;
+	width: 630px;
+	height: 730px;
+	max-width: 80vw;
+	max-height: 80vh;
+	padding: 30px 30px 50px 30px;
+	background-color: #fff;
+	font-family: 'Work Sans';
+}
+
+.align {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 0 70px;
+}
+
+.modal-wrapper .align h2 {
+	margin-bottom: 50px;
+}
+
+.modal-wrapper hr {
+	border: 1px solid #B3B3B3;
+	width: 100%;
+	margin-bottom: 40px;
+}
+
+.modal-wrapper h2 {
+	font-size: 26px;
+	font-family: 'Work Sans' ;
+	font-weight: lighter;
+	color: black;
+}
+
+.modal-wrapper p {
+	margin-top: 20px;
+}
+
+.green {
+	width: 237px;
+	background-color: #1D6154;
+	border: none;
+	color: white;
+	margin: 0 auto;
+}
+
+.grey {
+	width: 237px;
+	background-color: #A7A7A7;
+	border: none;
+	color: white;
+	margin: 0 auto;
+}
+
+.modal-gallery {
+	display: grid;
+	column-gap: 10px;
+	grid-template-columns: auto auto auto auto auto;
+	padding: 10px;
+}
+
+.modal-gallery div {
+	position: relative;
+	margin-bottom: 10px;
+}
+
+.modal-gallery img {
+	width: 100%;
+}
+
+.modal-gallery button {
+	border: none;
+	background-color: white;
+	color: black;
+	text-align: start;
+	margin: 0;
+	padding: 0;
+}
+
+.fa-trash-can {
+	background-color: black;
+	color: white;
+	padding: 4px;
+}
+
+.modal-gallery .trash {
+	position: absolute;
+	display: flex;
+	justify-content: flex-end;
+	width: 100%;
+	top: 5px;
+	right: 5px;
+	background-color: transparent;
+}
