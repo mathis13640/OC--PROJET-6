@@ -1,5 +1,5 @@
 
-/**************OUVERTURE FERMETURE MODAL*******************/
+/**************OUVERTURE FERMETURE MODAL*************/
 
 // Cette fonction ouvre la fenêtre modale lorsqu'elle est déclenchée par un événement de clic sur un élément ayant la classe "js-modal"
 const openModal = function(event) {
@@ -48,7 +48,7 @@ document.querySelectorAll('.js-modal').forEach(a => {
 
 /************CONTENU MODAL*******************/
 
-// Cette fonction asynchrone récupère des données à partir d'une API et remplit la galerie modale avec des images et des boutons
+// récupère les images à partir de l'API et remplit la galerie modale avec les elements demandés
 const modalGallery = document.querySelector(".modal-gallery");
 async function modalWorks() {
   modalGallery.innerHTML = "";
@@ -64,10 +64,7 @@ async function modalWorks() {
       const trashButton = document.createElement("button");
       const div = document.createElement("div");
       const icon = document.createElement("i");
-
-      // Définit les attributs de l'élément image pour afficher l'image à imageUrl
       imageElement.src = e.imageUrl;
-
       // Définit le texte interne du bouton d'édition
       editButton.innerText = "éditer";
 
@@ -92,3 +89,75 @@ async function modalWorks() {
     console.error("Une erreur s'est produite :", error);
   }
 }
+
+/************SUPPRESSION IMAGES*************/
+
+// Ajoute un gestionnaire d'événements à la galerie modal
+modalGallery.addEventListener("click", async (event) => {
+  if (event.target.classList.contains("trash")) {
+    const imageId = event.target.querySelector("i").getAttribute("id");
+    const token = localStorage.getItem("token");
+
+    // Vérifie que le token est présent dans le localStorage avant d'envoyer la requête DELETE
+    if (!token) {
+      console.log("Token manquant - l'utilisateur n'est pas connecté.");
+      return;
+    }
+
+    try {
+      const response = await fetch(`http://localhost:5678/api/works/${imageId}`, {
+        method: "DELETE",
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error(`Erreur lors de la suppression du travail ${imageId}`);
+      }
+
+      // Rafraîchit la galerie modale pour supprimer la photo supprimée
+      modalWorks();
+    } catch (error) {
+      console.error("Une erreur s'est produite :", error);
+    }
+  }
+});
+
+// Ajoute un gestionnaire d'événements aux nouveaux boutons de suppression créés dynamiquement
+document.querySelectorAll(".modal-gallery").forEach(div => {
+  div.addEventListener("click", async event => {
+    if (event.target.classList.contains("trash")) {
+      const imageId = event.target.querySelector("i").getAttribute("id");
+      const token = localStorage.getItem("authToken");
+
+      // Vérifie que le token est présent dans le localStorage avant d'envoyer la requête DELETE
+      if (!token) {
+        console.log("Token manquant - l'utilisateur n'est pas connecté.");
+        return;
+      }
+
+      try {
+        const response = await fetch(`http://localhost:5678/api/works/${imageId}`, {
+          method: "DELETE",
+          headers: {
+            "Authorization": `Bearer ${token}`
+          }
+        });
+        
+        if (!response.ok) {
+          throw new Error(`Erreur lors de la suppression du travail ${imageId}`);
+        }
+
+        // Rafraîchit la galerie modale pour supprimer la photo supprimée
+        modalWorks();
+      } catch (error) {
+        console.error("Une erreur s'est produite :", error);
+      }
+    }
+  });
+});
+
+
+
+
