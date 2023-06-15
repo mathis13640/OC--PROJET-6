@@ -414,7 +414,7 @@ article span {
 	display : none
 }
 
-/*Modale*/
+/*Modale1*/
 
 .icons {
 	display: flex;
@@ -560,8 +560,6 @@ article span {
 
 
 /*Modale2*/
-/* CSS pour seconde fenêtre modal */
-
 .modal-ajout-photo {
 	background-color: #E8F1F6;
 	width: 100%;
