@@ -158,7 +158,7 @@ function resetForm() {
                   <p>jpg, png : 4mo max</p>`;
 }
 
-//Sélectionne le bouton "importPhoto" et ajouter un écouteur d'événement pour le changement
+//Sélectionne le bouton "importPhoto" et ajout événement pour le changement
 const importPhoto = document.querySelector("#importPhoto");
 importPhoto.addEventListener("change", previewFile);
 
@@ -187,62 +187,63 @@ function displayImage(event, file) {
 
 // **************************************  AJOUTER UN TRAVAIL **************************************
 
+//Crée une fonction qui prend un objet formData en paramètre 
 const addForm = async (formData) => {
   try {
+    //Requête POST vers works"
     const response = await fetch("http://" + window.location.hostname + ":5678/api/works/", {
-      method: "POST",
-      headers: {
+      method: "POST", 
+      headers: { 
         accept: "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: formData,
+      body: formData, //Le corps de la requête est l'objet FormData qui a été fourni en paramètre
     });    
-    if (response.status == 201) {alert ("Un nouveau projet a été ajouté")};
-  } catch (error) {
+    if (response.status == 201) {alert ("Un nouveau projet a été ajouté")}; //Si la réponse est OK (201), affiche une alerte indiquant qu'un nouveau projet a été ajouté
+  } catch (error) { //Si une erreur se produit, logguez-la dans la console
     console.log(error);
   }
   
-  const modal1 = document.querySelector(".modal1");
-  const modal2 = document.querySelector(".modal2");
-  modal2.style.display = "none";
-  closeModal;
-  modal1.style.display = null;
-  modal = modal1;
-  modal.addEventListener("click", closeModal);
-  modal.querySelector(".js-modal-close").addEventListener("click", closeModal);
-  modal.querySelector(".js-modal-stop").addEventListener("click", stopPropagation);
-  modalWorks();
+  const modal1 = document.querySelector(".modal1"); 
+  const modal2 = document.querySelector(".modal2"); 
+  modal2.style.display = "none"; //Cache la modal
+  closeModal(); //Appelle la fonction closeModal 
+  modal1.style.display = null; //Change la propriété style.display de modal1 pour la montrer
+  modal = modal1; //Assigner modal1 à la variable modal
+  modal.addEventListener("click", closeModal); //Ajoute un écouteur d'événements de clic pour appeler la fonction closeModal lorsqu'un clic est détecté sur modal
+  modal.querySelector(".js-modal-close").addEventListener("click", closeModal); //Sélectionne l'élément du DOM ayant la classe .js-modal-close, ajoute un écouteur d'événements de clic pour appeler la fonction closeModal lorsqu'un clic est détecté sur cet élément
+  modal.querySelector(".js-modal-stop").addEventListener("click", stopPropagation); //Sélectionne l'élément du DOM ayant la classe .js-modal-stop, ajoute un écouteur d'événements de clic pour appeler la fonction stopPropagation lorsqu'un clic est détecté sur cet élément
+  modalWorks(); //Appelle la fonction modalWorks (dont le contenu n'est pas fourni ici)
   
-  gallery.innerHTML="";
-  getWorks();
+  gallery.innerHTML=""; //Change la propriété innerHTML de l'élément avec l'id gallery pour vider son contenu
+  getWorks(); //Appelle la fonction getWorks (dont le contenu n'est pas fourni ici)
 };
 
+//Ajoute event de soumission de formulaire qui prend l'événement d'entrée en argument
+let formPhoto = document.querySelector("#form-photo"); 
+formPhoto.addEventListener("submit", (e) => { 
+  e.preventDefault(); //Empêche le comportement par défaut de l'événement (c'est-à-dire la soumission du formulaire)
 
-let formPhoto = document.querySelector("#form-photo");
-formPhoto.addEventListener("submit", (e) => {
-  e.preventDefault(); 
+  const image = document.getElementById('importPhoto').files[0]; //Sélectionne l'élément du DOM ayant l'id importPhoto puis récupère le premier fichier sélectionné et assigne-le à la variable image
+  const titre = document.getElementById('titre').value; //Sélectionne l'élément du DOM ayant l'id titre et récupère sa valeur à l'aide de la propriété .value. Le résultat est stocké dans la variable titre
+  const category = document.getElementById('category-select').value; //Sélectionne l'élément du DOM ayant l'id category-select et récupère sa valeur à l'aide de la propriété .value. Le résultat est stocké dans la variable category
 
-  const image = document.getElementById('importPhoto').files[0];
-  const titre = document.getElementById('titre').value;
-  const category = document.getElementById('category-select').value;
-
-  const formData = new FormData();
-  formData.append("image", image);
-  formData.append("title", titre);
-  formData.append("category", category);
+  const formData = new FormData(); //Crée un objet FormData nommé formData
+  formData.append("image", image); //Ajoute la variable image en tant que champ "image" dans l'objet formData
+  formData.append("title", titre); //Ajoute la variable titre en tant que champ "title" dans l'objet formData
+  formData.append("category", category); //Ajoute la variable category en tant que champ "category" dans l'objet formData
   
 
-  let myRegex = /^[a-zA-Z-\s]+$/;
-  let buttonPhoto = document.querySelector("#submit-photo");
-  if ((titre == "") || (category == "") || (image == undefined) || (myRegex.test(titre) == false)) {
-    alert("Vous devez remplir tous les champs et le titre ne doit comporter que des lettres et des tirets");
-    return;
-  } else if (buttonPhoto.classList.contains("grey")){
-    buttonPhoto.classList.remove("grey");
-    buttonPhoto.classList.add("green");
-    return;
-    
-  } else {
-    addForm(formData);
+  let myCara = /^[a-zA-Z-\s]+$/; //Crée une expression régulière qui correspond aux chaînes de caractères ne contenant que des lettres majuscules ou minuscules, des tirets ou des espaces
+  let buttonPhoto = document.querySelector("#submit-photo"); //Sélectionne l'élément du DOM ayant l'id submit-photo et assigne-le à la variable buttonPhoto
+  if ((titre == "") || (category == "") || (image == undefined) || (myCara.test(titre) == false)) { //Vérifie que les variables titre, category et image ont bien été remplies et que titre ne contient que des lettres, des tirets ou des espaces. Si l'une de ces conditions est vraie ...
+    alert("Vous devez remplir tous les champs et le titre ne doit comporter que des lettres et des tirets"); //Affiche une alerte indiquant que tous les champs doivent être remplis et que le titre ne doit contenir que des lettres et des tirets
+    return; //Sort de la fonction (on ne va pas plus loin)
+  } else if (buttonPhoto.classList.contains("grey")){ //Sinon si la classe "grey" est incluse dans la liste des classes de buttonPhoto ...
+    buttonPhoto.classList.remove("grey"); //Retire la classe "grey"
+    buttonPhoto.classList.add("green"); //Ajoute la classe "green"
+    return; //Sort de la fonction (on ne va pas plus loin)
+  } else { //Sinon
+    addForm(formData); //Appelle la fonction addForm en lui passant l'objet FormData en paramètre
   }
 });
