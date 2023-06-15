@@ -557,3 +557,63 @@ article span {
 	right: 5px;
 	background-color: transparent;
 }
+
+
+/*Modale2*/
+/* CSS pour seconde fenêtre modal */
+
+.modal-ajout-photo {
+	background-color: #E8F1F6;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.modal-ajout-photo i {
+	margin-top: 28px;
+	font-size: 46px;
+	color: #B9C5CC;
+}
+
+.modal-ajout-photo img {
+	max-height: 173px;
+}
+
+#labelPhoto {
+	background-color: #CBD6DC;
+	width: 173px;
+	color: #306685;
+	border: none;
+	border-radius: 20px;
+	margin: 21px 15px 7px 15px;
+	padding: 10px 20px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.modal-ajout-photo p {
+	font-size: 10px;
+	padding-bottom: 20px;
+	padding-top: 7px;
+	margin: 0;
+}
+
+.modal2 form {
+	padding-top: 10px;
+	width: 100%;
+}
+
+.modal2 form label {
+	padding-top: 20px;
+	padding-bottom: 10px;
+}
+
+.modal2 form input {
+	height: 51px;
+}
+
+.modal2 form select {
+	height: 51px;
+	margin-bottom: 47px;
+}

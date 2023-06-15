@@ -64,6 +64,7 @@
 			</a>
 			</aside>
 			<!--MODALE-->
+			<!--Affichage modale 1-->
 			<article id="modal" class="modal1" aria-hidden="true" role="dialog" style="display: none">
 				<div class="modal-wrapper js-modal-stop">
 				  <div class="align">
@@ -78,6 +79,43 @@
 				  </div>
 				</div>
 			  </article>
+
+			    <!-- Affichage modale 2 -->
+				<article id="modal" class="modal2" style="display: none">
+					<div class="modal-wrapper js-modal-stop">
+					  <div class="align">
+						<div class="icons">
+						  <a href=".modal1">
+							<i class="fa-solid fa-arrow-left"></i>
+						  </a>
+						  <button class="js-modal-close">
+							<i class="fa-solid fa-x"></i>
+						  </button>
+						</div>
+						<h2>Ajout photo</h2>
+						<form action="#" method="post" id="form-photo">
+						  <div class="modal-ajout-photo">
+							<i class="fa-sharp fa-regular fa-image"></i>
+							<label for="importPhoto" id="labelPhoto">+ Ajouter photo</label>
+							<p>jpg, png : 4mo max</p>
+						  </div>
+						  <input type="file" class="blue" id="importPhoto" accept="image/jpg, image/png" name="image" hidden>
+						  <label for="titre">Titre</label>
+						  <input type="text" name="titre" id="titre" />
+						  <label for="categorie">Catégorie</label>
+						  <select name="categorie" id="category-select">
+							<option value=""> </option>
+							<option value="1">Objets</option>
+							<option value="2">Appartements</option>
+							<option value="3">Hotels & restaurants</option>
+						  </select>
+						  <hr />
+						  <button type="submit" class="grey" id="submit-photo">Valider</button>
+						</form>
+					  </div>
+					</div>
+				  </article>
+				  <!--boutons filtres-->
 			<div class="btns">
 				<button id="all-pics" class="btn btn-dimension active-color" type="button">Tous</button>
 				<button id="objets" class="btn btn-dimensions active-color" type="button">Objets</button>
@@ -86,6 +124,7 @@
 			</div>
 			<div class="gallery"></div>
 		</section>
+		<!------>
 		<section id="contact">
 			<h2>Contact</h2>
 			<p>Vous avez un projet ? Discutons-en !</p>
