@@ -54,7 +54,6 @@ const modalGallery = document.querySelector(".modal-gallery");
 const gallery = document.querySelector(".gallery");
 async function modalWorks() {
   modalGallery.innerHTML = "";
-
   try {
     const response = await fetch(`http://localhost:5678/api/works`);
     const data = await response.json();
@@ -93,9 +92,10 @@ async function modalWorks() {
 
   /************SUPPRESSION IMAGES*************/
 
+
   // Sélectionne tous les boutons "fa-trash-can" et ajout d'un event au clic
-  const buttonTrash = document.getElementsByClassName("fa-trash-can");
-   for (element of buttonTrash) {
+  const btnTrash = document.getElementsByClassName("fa-trash-can");
+   for (element of btnTrash) {
      element.addEventListener("click", (e) => {
      e.preventDefault();
      delWorks(e);
@@ -105,24 +105,27 @@ async function modalWorks() {
 
 // Fonction  pour supprimer un projet
 const delWorks = async (e) => {
+  e.preventDefault();
+  e.stopPropagation(); // Empêche la propagation de l'événement
+
   const response = await fetch(`http://localhost:5678/api/works/${e.target.id}`, {
-  method: "DELETE",
-  headers: {
-    "Content-type": "application/json; charset=UTF-8",
-    Authorization: `Bearer ${token}`, //envoi du token à l'api pour récupérer les droits 
-  },
-});
+    method: "DELETE",
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+      Authorization: `Bearer ${token}`,
+    },
+  });
 
-if (response.status == 200 || response.status == 204) {
-  alert ("Un projet a été supprimé");
+  if (response.status == 200 || response.status == 204) {
+    alert("Un projet a été supprimé");
+  }
+  modalWorks();
+  gallery.innerHTML = "";
+  getWorks();
 };
 
-modalWorks();
-gallery.innerHTML="";
-getWorks();
-};
+// **********************  SECONDE MODAL ********************* //
 
-// **************************************  SECONDE MODAL ************************************** //
 
 //Fonction pour ouvrir la seconde modale 
 const openModal2 = function (e) {
@@ -186,7 +189,8 @@ function displayImage(event) {
   modalAddPic.appendChild(photo);
 }
 
-// **************************************  AJOUTER UN TRAVAIL **************************************
+// *************************  AJOUT TRAVAIL ************************ //
+
 
 //Fonction pour envoyer requête POST à l'API
 const addForm = async (formData) => {
