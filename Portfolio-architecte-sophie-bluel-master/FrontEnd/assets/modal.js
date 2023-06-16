@@ -105,9 +105,7 @@ async function modalWorks() {
 
 // Fonction  pour supprimer un projet
 const delWorks = async (e) => {
-  e.preventDefault();
-  e.stopPropagation(); // Empêche la propagation de l'événement
-
+  e.preventDefault() 
   const response = await fetch(`http://localhost:5678/api/works/${e.target.id}`, {
     method: "DELETE",
     headers: {
