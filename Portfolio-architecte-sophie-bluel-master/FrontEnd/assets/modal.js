@@ -4,7 +4,7 @@
 // Cette fonction ouvre la fenêtre modale lorsqu'elle est déclenchée par un événement de clic sur un élément ayant la classe "js-modal"
 const openModal = function(event) {
     event.preventDefault();
-    const target = document.querySelector('.modal1');
+    const target = document.querySelector('.modalRemove');
     target.style.display = null;
     target.removeAttribute('aria-hidden');
     target.setAttribute('aria-modal','true');
@@ -126,11 +126,11 @@ const delWorks = async (e) => {
 
 
 //Fonction pour ouvrir la seconde modale 
-const openModal2 = function (e) {
+const openModalAdd = function (e) {
   e.preventDefault();
-  const modal1 = document.querySelector(".modal1");//cache la modale1
-  modal1.style.display = "none";
-  const target = document.querySelector(".modal2");//affiche la modale2
+  const modalRemove = document.querySelector(".modal-remove");//cache la modale1
+  modalRemove.style.display = "none";
+  const target = document.querySelector(".modal-add");//affiche la modale2
   target.style.display = null;
   resetForm();
   modal = target;
@@ -144,8 +144,8 @@ const openModal2 = function (e) {
   modal.querySelector(".js-modal-stop").addEventListener("click", stopPropagation);
   modalWorks();
 };
-document.querySelectorAll(".js-modal2").forEach((e) => {
-  e.addEventListener("click", openModal2);
+document.querySelectorAll(".js-modal-add").forEach((e) => {
+  e.addEventListener("click", openModalAdd);
 });
 
 
@@ -207,12 +207,12 @@ const addForm = async (formData) => {
     console.log(error);
   }
   
-  const modal1 = document.querySelector(".modal1"); 
-  const modal2 = document.querySelector(".modal2"); 
-  modal2.style.display = "none"; 
+  const modalRemove = document.querySelector(".modal-remove"); 
+  const modalAdd = document.querySelector(".modal-add"); 
+  modalAdd.style.display = "none"; 
   closeModal(); 
-  modal1.style.display = null; 
-  modal = modal1; 
+  modalRemove.style.display = null; 
+  modal = modalRemove; 
   modal.addEventListener("click", closeModal); 
   modal.querySelector(".js-modal-close").addEventListener("click", closeModal); 
   modal.querySelector(".js-modal-stop").addEventListener("click", stopPropagation);
