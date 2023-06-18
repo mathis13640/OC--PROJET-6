@@ -93,7 +93,7 @@ async function modalWorks() {
   /************SUPPRESSION IMAGES*************/
 
 
-  // Sélectionne tous les boutons "fa-trash-can" et ajout d'un event au clic
+  // Sélectionne boutons "fa-trash-can" et ajout d'un event au clic
   const btnTrash = document.getElementsByClassName("fa-trash-can");
    for (element of btnTrash) {
      element.addEventListener("click", (e) => {
@@ -167,7 +167,7 @@ function previewFile() {
   //Variable stocke expression régulière pour autoriser uniquement les fichiers .jpg/png 
   const file_regex = /\.(jpg|png)$/i;
   //Vérifie si l'utilisateur a choisi au moins un fichier ou si le fichier sélectionné n'a pas une extension valide
-  if (this.files.length == 0 || !file_regex.test(this.files[0].name)) {
+  if (this.files.length === 0 || !file_regex.test(this.files[0].name)) {
     return;
   }
   
