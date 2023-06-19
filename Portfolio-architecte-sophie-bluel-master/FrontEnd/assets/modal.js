@@ -4,7 +4,7 @@
 // Cette fonction ouvre la fenêtre modale lorsqu'elle est déclenchée par un événement de clic sur un élément ayant la classe "js-modal"
 const openModal = function(event) {
     event.preventDefault();
-    const target = document.querySelector('.modalRemove');
+    const target = document.querySelector('.modal-remove');
     target.style.display = null;
     target.removeAttribute('aria-hidden');
     target.setAttribute('aria-modal','true');
